@@ -9,12 +9,12 @@ export class MerchantService {
   }
 
   createMerchant(merchant: Merchant) {
+    console.log('Merchant', merchant);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      withCredentials: 'true',
       Authorization: 'Token ' + environment.apiKey
     });
 
-    return this.http.post(environment.apiUrl + 'superadmin/merchant', merchant, {headers});
+    return this.http.post(environment.apiUrl + 'superadmin/merchant/', merchant, {headers});
   }
 }

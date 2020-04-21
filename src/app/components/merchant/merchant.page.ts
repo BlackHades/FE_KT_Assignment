@@ -58,7 +58,6 @@ export class MerchantComponent implements OnInit {
                 this.alert = 'success';
                 this.isLoading = false;
                 this.showToast('new merchant added successfully!', 'success');
-
               }
             },
             e => {
