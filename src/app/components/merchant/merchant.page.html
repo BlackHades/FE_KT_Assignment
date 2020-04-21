@@ -20,7 +20,7 @@
                     <ion-col>
                         <ion-item>
                             <ion-input type="text"
-                                       [ngModel]="merchant.firstName"
+                                       [(ngModel)]="merchant.first_name"
                                        required
                                        name="merchant_name"
                                        placeholder="Merchant Name">
@@ -35,7 +35,7 @@
                             <ion-label>Business Category {{idx + 1}}</ion-label>
                             <ion-item>
                                 <ion-select (ionChange)="selectCategory($event.target.value)" name="{{businessCategory[idx].name}}"
-                                            [ngModel]="businessCategory[idx].value">
+                                            [(ngModel)]="businessCategory[idx].value">
                                     <ion-select-option>{{bc.label}}</ion-select-option>
                                 </ion-select>
                             </ion-item>
@@ -56,7 +56,7 @@
                         </ion-label>
                         <ion-item>
                             <ion-input type="text"
-                                       [ngModel]="merchant.email"
+                                       [(ngModel)]="merchant.email"
                                        name="email"
                                        placeholder="ex. email@example.com">
 
@@ -69,7 +69,7 @@
                         </ion-label>
                         <ion-item>
                             <ion-input type="text"
-                                       [ngModel]="merchant.mobileNumber"
+                                       [(ngModel)]="merchant.mobile_number"
                                        required
                                        name="mobile_number"
                                        placeholder="ex. 9231231231">
@@ -85,7 +85,7 @@
                         </ion-label>
                         <ion-item>
                             <ion-input type="text"
-                                       [ngModel]="merchant.licenseNumber"
+                                       [(ngModel)]="merchant.license_number"
                                        required
                                        name="license_number"
                                        placeholder="ex. 1234567890123">
@@ -120,7 +120,7 @@
                             <ion-input type="text"
                                        name="account_number"
                                        ngModel
-                                       [(ngModel)]="merchant.bankAccount.accountNumber"
+                                       [(ngModel)]="merchant.bank_account.accountNumber"
                                        required
                                        placeholder="ex. 1234567892"></ion-input>
                         </ion-item>

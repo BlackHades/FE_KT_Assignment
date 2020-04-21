@@ -9,6 +9,14 @@
     "deprecation": {
       "severity": "warn"
     },
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "allow-leading-underscore",
+        "allow-pascal-case"
+      ]
+    },
     "import-blacklist": [
       true,
       "rxjs/Rx"
@@ -75,7 +83,8 @@
       true,
       "attribute",
       "app",
-      "camelCase"
+      "camelCase",
+      "underscore"
     ],
     "component-selector": [
       true,

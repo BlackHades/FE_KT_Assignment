@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MerchantService} from './merchant.service';
-import {IMerchant, Merchant} from './merchant.model';
+import {Merchant} from './merchant.model';
 import {NgForm} from '@angular/forms';
 import {ToastController} from '@ionic/angular';
 
@@ -16,7 +16,7 @@ export class MerchantComponent implements OnInit {
   public folder: string;
   alert: string;
   isLoading: boolean;
-  merchant: IMerchant;
+  merchant: Merchant;
   businessCategory = [];
 
   @ViewChild('merchantForm', {static: true}) form: NgForm;
