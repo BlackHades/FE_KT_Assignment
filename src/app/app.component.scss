@@ -121,6 +121,10 @@ ion-item.selected {
 .nav--right {
   display: flex;
   align-items: center;
+}
+@media all and (min-width:1200px){
 
-
+  #side-menu{
+    margin-top: 5rem;
+  }
 }

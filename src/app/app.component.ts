@@ -24,25 +24,20 @@ export class AppComponent implements OnInit {
       icon: 'paper-plane'
     },
     {
-      title: 'Favorites',
+      title: 'Products',
       url: '/merchant/Favorites',
       icon: 'heart'
     },
     {
-      title: 'Archived',
+      title: 'Orders',
       url: '/merchant/Archived',
       icon: 'archive'
     },
     {
-      title: 'Trash',
+      title: 'Campaign',
       url: '/merchant/Trash',
       icon: 'trash'
     },
-    {
-      title: 'Spam',
-      url: '/merchant/Spam',
-      icon: 'warning'
-    }
   ];
 
   constructor(

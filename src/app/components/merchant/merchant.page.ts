@@ -3,6 +3,7 @@ import {ActivatedRoute} from '@angular/router';
 import {MerchantService} from './merchant.service';
 import {IMerchant, Merchant} from './merchant.model';
 import {NgForm} from '@angular/forms';
+import {ToastController} from '@ionic/angular';
 
 
 @Component({
@@ -21,7 +22,9 @@ export class MerchantComponent implements OnInit {
   @ViewChild('merchantForm', {static: true}) form: NgForm;
 
 
-  constructor(private activatedRoute: ActivatedRoute, private merchantService: MerchantService) {
+  constructor(private activatedRoute: ActivatedRoute,
+              private merchantService: MerchantService,
+              public toastController: ToastController) {
   }
 
   ngOnInit() {
@@ -29,6 +32,19 @@ export class MerchantComponent implements OnInit {
     this.merchant = new Merchant({});
     console.log('this merchant', this.merchant);
 
+  }
+
+  showToast(message: string, color: string) {
+    this.toastController.create({
+      message,
+      duration: 2000,
+      animated: true,
+      cssClass: 'my-toast',
+      position: 'top',
+      color,
+    }).then((obj) => {
+      obj.present();
+    });
   }
 
   onSubmit() {
@@ -41,10 +57,13 @@ export class MerchantComponent implements OnInit {
               if (res.success) {
                 this.alert = 'success';
                 this.isLoading = false;
+                this.showToast('new merchant added successfully!', 'success');
+
               }
             },
             e => {
               this.isLoading = false;
+              this.showToast('Something went wrong! Unable to add merchant', 'danger');
               console.log('error', e);
             });
   }

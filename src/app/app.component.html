@@ -1,5 +1,5 @@
 <ion-app>
-    <ion-header [translucent]="true">
+    <ion-header class="ion-margin-bottom" [translucent]="true">
         <ion-toolbar>
             <ion-buttons slot="start">
                 <ion-menu-button></ion-menu-button>
@@ -16,9 +16,9 @@
     </ion-header>
   <ion-split-pane contentId="main-content">
     <ion-menu contentId="main-content" type="overlay">
-      <ion-content class="ion-margin-top">
-        <ion-list id="inbox-list">
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+      <ion-content class="ion-margin-top ion-padding-top">
+        <ion-list id="side-menu">
+          <ion-menu-toggle class="ion-margin-top ion-padding-top" auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i"
                       routerDirection="root" [routerLink]="[p.url]"
                       lines="none" detail="false"
