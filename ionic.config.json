@@ -1,0 +1,7 @@
+{
+  "name": "FE_KT_Assignment",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

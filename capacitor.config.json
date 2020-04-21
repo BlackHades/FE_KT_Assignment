@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "FE_KT_Assignment",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}
