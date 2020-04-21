@@ -15,28 +15,23 @@ export class AppComponent implements OnInit {
   public appPages = [
     {
       title: 'Dashboard',
-      url: '/merchant/Inbox',
-      icon: 'mail'
+      url: '/merchant/dashboard',
     },
     {
       title: 'Merchants',
-      url: '/merchant/Outbox',
-      icon: 'paper-plane'
+      url: '/merchant/add-merchant',
     },
     {
       title: 'Products',
-      url: '/merchant/Favorites',
-      icon: 'heart'
+      url: '/merchant/products',
     },
     {
       title: 'Orders',
-      url: '/merchant/Archived',
-      icon: 'archive'
+      url: '/merchant/orders',
     },
     {
       title: 'Campaign',
-      url: '/merchant/Trash',
-      icon: 'trash'
+      url: '/merchant/campaign',
     },
   ];
 

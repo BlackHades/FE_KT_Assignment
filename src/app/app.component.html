@@ -4,7 +4,7 @@
             <ion-buttons slot="start">
                 <ion-menu-button></ion-menu-button>
             </ion-buttons>
-            <ion-col pushLg="9">
+            <ion-col pushLg="10">
                 <div class="nav--right">
                     <ion-label>Avatar Chip</ion-label>
                     <ion-avatar>
@@ -18,7 +18,8 @@
     <ion-menu contentId="main-content" type="overlay">
       <ion-content class="ion-margin-top ion-padding-top">
         <ion-list id="side-menu">
-          <ion-menu-toggle class="ion-margin-top ion-padding-top" auto-hide="false" *ngFor="let p of appPages; let i = index">
+          <ion-menu-toggle class="ion-margin-top ion-padding-top"
+                           auto-hide="false" *ngFor="let p of appPages; let i = index">
             <ion-item (click)="selectedIndex = i"
                       routerDirection="root" [routerLink]="[p.url]"
                       lines="none" detail="false"

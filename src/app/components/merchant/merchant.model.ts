@@ -23,7 +23,8 @@ export class Merchant {
     };
     bank_account: {
         bank_id: number,
-        accountNumber: string
+        account_number: string,
+        bvn_number: string,
     };
     documents: any;
 
@@ -36,12 +37,16 @@ export class Merchant {
         this.status = merchant.status || '';
         this.image_id = merchant.image_id ||'';
         this.store = {
-            name: merchant.store || '',
-            description: merchant.store || '',
-            categories: merchant.store  || [],
+            name: merchant.store && merchant.store.name || '',
+            description:merchant.store && merchant.store.description || '',
+            categories: merchant.store && merchant.store.categories || [],
         };
         this.address = merchant.address || "";
-        this.bank_account = merchant.bank_account || "";
+        this.bank_account = merchant.bank_account || {
+            bank_id: 0,
+            account_number: '',
+            bvn_number:''
+        };
         this.documents = merchant.documents || [];
     }
 }

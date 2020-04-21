@@ -5,7 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 
 import {FolderPageRoutingModule} from './merchant-routing.module';
-import {MerchantComponent} from './merchant.page';
+import {MerchantComponent} from './merchant.component';
 
 @NgModule({
   imports: [

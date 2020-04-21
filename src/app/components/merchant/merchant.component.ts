@@ -1,15 +1,14 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MerchantService} from './merchant.service';
 import {Merchant} from './merchant.model';
-import {NgForm} from '@angular/forms';
 import {ToastController} from '@ionic/angular';
 
 
 @Component({
   selector: 'app-merchant',
-  templateUrl: './merchant.page.html',
-  styleUrls: ['./merchant.page.scss'],
+  templateUrl: './merchant.component.html',
+  styleUrls: ['./merchant.component.scss'],
 })
 
 export class MerchantComponent implements OnInit {
@@ -19,9 +18,6 @@ export class MerchantComponent implements OnInit {
   merchant: Merchant;
   businessCategory = [];
 
-  @ViewChild('merchantForm', {static: true}) form: NgForm;
-
-
   constructor(private activatedRoute: ActivatedRoute,
               private merchantService: MerchantService,
               public toastController: ToastController) {
@@ -29,9 +25,12 @@ export class MerchantComponent implements OnInit {
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
-    this.merchant = new Merchant({});
-    console.log('this merchant', this.merchant);
+    this.resetMerchant();
+  }
 
+  saveDraft() {
+    localStorage.setItem('merchant',JSON.stringify(this.merchant));
+    this.showToast('Current form has been saved to Draft','success');
   }
 
   showToast(message: string, color: string) {
@@ -47,17 +46,20 @@ export class MerchantComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmit(e) {
+    e.preventDefault();
     this.isLoading = true;
     this.resetAlert();
-    console.log('this form data', this.form, this.merchant);
+    console.log('this form data', this.merchant);
 
     this.merchantService.createMerchant(this.merchant)
         .subscribe((res: any) => {
+              this.resetMerchant();
               if (res.success) {
                 this.alert = 'success';
                 this.isLoading = false;
-                this.showToast('new merchant added successfully!', 'success');
+                this.showToast('new merchant with merchant id: '
+                    + res.merchant.id + ' created successfully! ', 'success');
               }
             },
             e => {
@@ -73,16 +75,25 @@ export class MerchantComponent implements OnInit {
     }
   }
 
+  selectBank(e: any) {
+    this.merchant.bank_account.bank_id = parseInt(e);
+  }
+
   addBusinessCategory() {
     const value = this.businessCategory.length + 1;
     this.businessCategory.push({
       label: 'Jewelry Category',
-      name: 'business_category_' + value,
+      name: 'category' + value,
       value
     });
   }
 
   resetAlert() {
     this.alert = '';
+  }
+
+  resetMerchant() {
+    this.merchant = new Merchant({});
+
   }
 }

@@ -9,7 +9,6 @@ export class MerchantService {
   }
 
   createMerchant(merchant: Merchant) {
-    console.log('Merchant', merchant);
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Token ' + environment.apiKey
