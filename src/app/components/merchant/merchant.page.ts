@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MerchantService} from './merchant.service';
 import {IMerchant} from './merchant.model';
+import { MultiFileUploadComponent } from '../multi-file-upload/multi-file-upload.component';
 
 
 @Component({
@@ -14,10 +15,27 @@ export class MerchantComponent implements OnInit {
   alert: string;
   isLoading: boolean;
   merchant: IMerchant;
-
+  @ViewChild(MultiFileUploadComponent,{static:false}) fileField: MultiFileUploadComponent;
 
   constructor(private activatedRoute: ActivatedRoute, private merchantService: MerchantService) {
   }
+
+  upload(){
+
+    let files = this.fileField.getFiles();
+    console.log(files);
+
+    let formData = new FormData();
+    formData.append('somekey', 'some value') // Add any other data you want to send
+
+    files.forEach((file) => {
+      formData.append('files[]', file.rawFile, file.name);
+    });
+
+    // POST formData to Server
+
+  }
+
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');

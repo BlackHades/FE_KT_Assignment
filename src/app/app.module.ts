@@ -12,6 +12,7 @@ import {MerchantComponent} from './components/merchant/merchant.component';
 import {LoaderComponent} from './components/loader/loader.component';
 import {MerchantService} from './components/merchant/merchant.service';
 import {HttpClientModule} from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core'
 
 @NgModule({
   declarations: [AppComponent, MerchantComponent, LoaderComponent],
@@ -28,6 +29,7 @@ import {HttpClientModule} from '@angular/common/http';
     MerchantService,
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule {

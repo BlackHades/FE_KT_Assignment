@@ -10,6 +10,7 @@ import {FileUploadModule} from 'ng2-file-upload';
 import {MerchantComponent} from './merchant.page';
 import { Merchant } from './merchant.model';
 import { RouterModule } from '@angular/router';
+import { MultiFileUploadComponent } from '../multi-file-upload/multi-file-upload.component';
 
 @NgModule({
   imports: [

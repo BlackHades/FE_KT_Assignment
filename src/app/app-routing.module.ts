@@ -4,12 +4,13 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'merchant/add',
+    redirectTo: 'merchant/',
     pathMatch: 'full'
   },
   {
     path: 'merchant/:id',
-    loadChildren: () => import('./components/merchant/merchant.module').then(m => m.FolderPageModule)
+    loadChildren: () => import('./components/merchant/merchant.module').then(m => m.MerchantPageModule,
+      )
   }
 ];
 
