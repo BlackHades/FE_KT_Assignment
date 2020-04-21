@@ -1,6 +1,8 @@
 <ion-content [fullscreen]="true">
     <form (ngSubmit)="onSubmit()" #merchantForm='ngForm' class="panel--merchant">
-        <ion-spinner *ngIf="isLoading" name="circles"></ion-spinner>
+        <div class="loader-panel ion-align-items-center">
+            <ion-spinner *ngIf="isLoading" name="circles"></ion-spinner>
+        </div>
         <div class="panel--header">
             <h3>Add Merchant </h3>
             <div class="panel--actions">

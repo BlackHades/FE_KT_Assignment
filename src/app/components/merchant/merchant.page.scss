@@ -49,6 +49,7 @@ ion-menu-button {
 
 @media all and (min-width: 1200px) {
 
+
   .panel--merchant {
     .panel--header {
       flex-direction: row;
@@ -58,6 +59,12 @@ ion-menu-button {
       h3 {
         margin: 0;
       }
+    }
+    .loader-panel{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 2rem;
     }
 
   }

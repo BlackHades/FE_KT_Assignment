@@ -32,7 +32,7 @@ export class MerchantComponent implements OnInit {
   }
 
   onSubmit() {
-    // this.isLoading = true;
+    this.isLoading = true;
     this.resetAlert();
     console.log('this form data', this.form, this.merchant);
 
