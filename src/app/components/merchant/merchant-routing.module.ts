@@ -15,3 +15,7 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class FolderPageRoutingModule {}
+RouterModule.forRoot([
+  { path: '', component: MerchantComponent },
+  //{ path: 'merchant', component: MerchantComponent }
+]);

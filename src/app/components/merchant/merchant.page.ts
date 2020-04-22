@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {MerchantService} from './merchant.service';
 import {IMerchant} from './merchant.model';
 import { MultiFileUploadComponent } from '../multi-file-upload/multi-file-upload.component';
+import { FileUploader, FileLikeObject } from  'ng2-file-upload';
+import { concat } from  'rxjs';
 
 
 @Component({
@@ -16,21 +18,49 @@ export class MerchantComponent implements OnInit {
   isLoading: boolean;
   merchant: IMerchant;
   @ViewChild(MultiFileUploadComponent,{static:false}) fileField: MultiFileUploadComponent;
+  hasBaseDropZoneOver: any;
+  fileUploader: any;
+  uploadingService: any;
 
   constructor(private activatedRoute: ActivatedRoute, private merchantService: MerchantService) {
+  }
+  fileOverBase(event): void {
+    this.hasBaseDropZoneOver = event;
+  }
+  getFiles(): FileLikeObject[] {
+    return this.fileUploader.queue.map((fileItem) => {
+      return fileItem.file;
+
+    });
   }
 
   upload(){
 
     let files = this.fileField.getFiles();
+    let requests = [];
     console.log(files);
 
     let formData = new FormData();
-    formData.append('somekey', 'some value') // Add any other data you want to send
+    formData.append('type', 'license'),
+    formData.append('description', 'photo'),
+    formData.append('file', 'image.jpg') // Add any other data you want to send
 
     files.forEach((file) => {
-      formData.append('files[]', file.rawFile, file.name);
+      let formData = new FormData();
+      formData.append('file' , file.rawFile, file.name);
+      requests.push(this.uploadingService.uploadFormData(formData));
+
     });
+
+
+    concat(...requests).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {  
+        console.log(err);
+      }
+    );
 
     // POST formData to Server
 

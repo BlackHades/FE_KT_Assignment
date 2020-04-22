@@ -9,9 +9,17 @@ import {FileUploadModule} from 'ng2-file-upload';
 //import { MultiFileUploadComponent } from '../components/multi-file-upload/multi-file-upload.component';
 import {MerchantComponent} from './merchant.page';
 import { Merchant } from './merchant.model';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { MultiFileUploadComponent } from '../multi-file-upload/multi-file-upload.component';
 
+
+const routes: Routes = [
+  {
+    path: '',
+redirectTo: '/user',
+    component: Merchant
+  }
+];
 @NgModule({
   imports: [
     CommonModule,
@@ -19,13 +27,15 @@ import { MultiFileUploadComponent } from '../multi-file-upload/multi-file-upload
     IonicModule,
     FileUploadModule,
     FolderPageRoutingModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: Merchant
-      }
-    ])
-  ],
+    RouterModule.forChild(routes),
+  
+   // RouterModule.forChild([
+    //  {
+      //  path: '',
+      //  component: Merchant
+    //  }
+   // ])
+ ],
 
   declarations: [MerchantComponent, MultiFileUploadComponent]
 })
