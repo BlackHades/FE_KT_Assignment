@@ -1,0 +1,150 @@
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="onSubmit()" class="panel--merchant">
+      <div class="panel--header">
+          <h3>Add Merchant </h3>
+          <div class="panel--actions">
+              <button class="panel--button">
+                  Save Draft
+              </button>
+              <button type="submit" class="panel--button button--primary">
+                  Register
+              </button>
+          </div>
+      </div>
+      <div class="panel--form-inner">
+          <ion-grid>
+              <ion-row>
+                  <ion-col>
+                      <ion-item>
+                          <ion-input type="text"
+                                     name="first_name"
+                                     placeholder="Merchant Name">
+
+                          </ion-input>
+                      </ion-item>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-list>
+                          <ion-label>Business Category 1</ion-label>
+                          <ion-item>
+                              <ion-select [value]="1">
+                                  <ion-select-option value="1">Jewelry And Watches</ion-select-option>
+                              </ion-select>
+                          </ion-item>
+                      </ion-list>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-list>
+                          <ion-label>
+                              Business Category 2
+                          </ion-label>
+                          <ion-item>
+                              <ion-select [value]="1">
+                                  <ion-select-option value="1">Jewelry And Watches</ion-select-option>
+                              </ion-select>
+                          </ion-item>
+                          <ion-label>
+                              + Add More Business Category
+                          </ion-label>
+                      </ion-list>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-label>
+                          Email
+                      </ion-label>
+                      <ion-item>
+                          <ion-input type="text"
+                                     name="email"
+                                     placeholder="ex. email@example.com">
+
+                          </ion-input>
+                      </ion-item>
+                  </ion-col>
+                  <ion-col>
+                      <ion-label>
+                          Mobile Number
+                      </ion-label>
+                      <ion-item>
+                          <ion-input type="text"
+                                     name="mobile_number"
+                                     placeholder="ex. 9231231231">
+
+                          </ion-input>
+                      </ion-item>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-label>
+                          Business License Number
+                      </ion-label>
+                      <ion-item>
+                          <ion-input type="text"
+                                     name="license_number"
+                                     placeholder="ex. 1234567890123">
+
+                          </ion-input>
+                      </ion-item>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+          <hr/>
+          <h3>Merchant Bank Details </h3>
+
+          <ion-grid>
+              <ion-row>
+                  <ion-col>
+                      <ion-list>
+                          <ion-label>Select Bank</ion-label>
+                          <ion-item>
+                              <ion-select placeholder="ex. Access Bank">
+                                  <ion-select-option value="access_bank">Access Bank</ion-select-option>
+                              </ion-select>
+                          </ion-item>
+                      </ion-list>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-label>
+                          Enter 10 Digit Account Number
+                      </ion-label>
+                      <ion-item>
+                          <ion-input type="text"
+                                     name="account_number"
+                                     placeholder="ex. email@example.com"></ion-input>
+                      </ion-item>
+                  </ion-col>
+                  <ion-col>
+                      <ion-label>
+                          Enter 11-Digit Bvn
+                      </ion-label>
+                      <ion-item>
+                          <ion-input type="text" name="bvn_number" name="phone_number"
+                                     placeholder="ex. 1234567890123"></ion-input>
+                      </ion-item>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </div>
+
+  </form>
+</ion-content>
+<ion-label>
+    Personal Documents
+</ion-label>
+  <ion-content padding>
+    <app-multi-file-upload></app-multi-file-upload>
+  </ion-content>
+  <ion-label>
+    Business Documents
+</ion-label>
+  <ion-content padding>
+    <app-multi-file-upload></app-multi-file-upload>
+  </ion-content>

@@ -9,6 +9,7 @@
     "deprecation": {
       "severity": "warn"
     },
+<<<<<<< HEAD
     "variable-name": {
       "options": [
         "ban-keywords",
@@ -17,6 +18,8 @@
         "allow-pascal-case"
       ]
     },
+=======
+>>>>>>> uploadfile
     "import-blacklist": [
       true,
       "rxjs/Rx"
@@ -83,8 +86,12 @@
       true,
       "attribute",
       "app",
+<<<<<<< HEAD
       "camelCase",
       "underscore"
+=======
+      "camelCase"
+>>>>>>> uploadfile
     ],
     "component-selector": [
       true,

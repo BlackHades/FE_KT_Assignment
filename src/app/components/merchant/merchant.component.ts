@@ -1,8 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MerchantService} from './merchant.service';
 import {Merchant} from './merchant.model';
-import {ToastController} from '@ionic/angular';
+import { MultiFileUploadComponent } from '../multi-file-upload/multi-file-upload.component';
+import { FileUploader, FileLikeObject } from  'ng2-file-upload';
+import { concat } from  'rxjs';
+import {ToastController} from "@ionic/angular";
 
 
 @Component({
@@ -17,11 +20,53 @@ export class MerchantComponent implements OnInit {
   isLoading: boolean;
   merchant: Merchant;
   businessCategory = [];
+  @ViewChild(MultiFileUploadComponent,{static:false}) fileField: MultiFileUploadComponent;
+  hasBaseDropZoneOver: any;
+  fileUploader: any;
+  uploadingService: any;
 
-  constructor(private activatedRoute: ActivatedRoute,
-              private merchantService: MerchantService,
-              public toastController: ToastController) {
+  constructor(private activatedRoute: ActivatedRoute, private merchantService: MerchantService, public toastController: ToastController) {
   }
+  fileOverBase(event): void {
+    this.hasBaseDropZoneOver = event;
+  }
+  getFiles(): FileLikeObject[] {
+    return this.fileUploader.queue.map((fileItem) => {
+      return fileItem.file;
+    });
+  }
+
+  upload(){
+    let files = this.fileField.getFiles();
+    let requests = [];
+    console.log(files);
+
+    let formData = new FormData();
+    formData.append('type', 'license');
+    formData.append('description', 'photo');
+    formData.append('file', 'image.jpg'); // Add any other data you want to send
+
+    files.forEach((file) => {
+      let formData = new FormData();
+      formData.append('file' , file.rawFile, file.name);
+      requests.push(this.uploadingService.uploadFormData(formData));
+
+    });
+
+
+    concat(...requests).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
+
+    // POST formData to Server
+
+  }
+
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
@@ -91,7 +136,6 @@ export class MerchantComponent implements OnInit {
   resetAlert() {
     this.alert = '';
   }
-
   resetMerchant() {
     this.merchant = new Merchant({});
 

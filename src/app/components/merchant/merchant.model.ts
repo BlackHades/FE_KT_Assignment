@@ -1,4 +1,3 @@
-
 export class Merchant {
     first_name: string;
     last_name: string;
